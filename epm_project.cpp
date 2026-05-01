@@ -484,8 +484,8 @@ void viewSalary(long long empId) {
             cout << "Name: " << employees[i].name << "\n";
             //Fixed and setprecision to show 2 decimal places for all financial values
             cout << "Basic Salary: " << fixed << setprecision(2) << employees[i].basicSalary << "\n";
+            cout << "Overtime Hours: " << fixed << setprecision(2) << employees[i].overtime << "\n";
             cout << "Bonus: " << fixed << setprecision(2) << employees[i].bonus << "\n";
-            cout << "Overtime: " << fixed << setprecision(2) << employees[i].overtime << "\n";
             cout << "Tax 14% of Basic Salary : " << fixed << setprecision(2) << employees[i].tax << "\n";
             cout << "Net Salary: " << fixed << setprecision(2) << employees[i].netSalary << "\n";
             cout << "========================================\n";
