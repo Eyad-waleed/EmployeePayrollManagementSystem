@@ -54,7 +54,7 @@ long long getValidId();
 // Employee Functions Declarations
 bool employeeLogin();
 void viewPersonalInfo();
-void viewSalary();
+void viewSalary(long long empId);
 void viewAttendance();
 
 // Admin Functions Declarations
@@ -176,6 +176,7 @@ void handleAdmin() {
                 cout << "Enter Employee ID to calculate salary: ";
                 empId = getValidId();
                 calculateSalary(empId);
+				viewSalary(empId);
                 break;
             }
             case 6:
@@ -239,7 +240,7 @@ void handleEmployee() {
 
         case 2:
             calculateSalary(employees[currentEmployeeIndex].employeeID);
-            viewSalary();
+            viewSalary(employees[currentEmployeeIndex].employeeID);
             break;
 
         case 3:
@@ -471,19 +472,27 @@ void viewPersonalInfo()
     cout << "========================================\n";
 } //ahmed
 
-void viewSalary() {
-    cout << "\n========================================\n";
-    cout << "           Salary Information\n";
-    cout << "========================================\n";
-    cout << "Employee ID: " << employees[currentEmployeeIndex].employeeID << "\n";
-    cout << "Name: " << employees[currentEmployeeIndex].name << "\n";
-	//Fixed and setprecision to show 2 decimal places for all financial values
-    cout << "Basic Salary: " << fixed << setprecision(2) << employees[currentEmployeeIndex].basicSalary << "\n";
-    cout << "Bonus: " << fixed << setprecision(2) << employees[currentEmployeeIndex].bonus << "\n";
-    cout << "Overtime: " << fixed << setprecision(2) << employees[currentEmployeeIndex].overtime << "\n";
-    cout << "Tax: " << fixed << setprecision(2) << employees[currentEmployeeIndex].tax << "\n";
-    cout << "Net Salary: " << fixed << setprecision(2) << employees[currentEmployeeIndex].netSalary << "\n";
-    cout << "========================================\n";
+void viewSalary(long long empId) {
+
+    for (int i = 0; i < employeeCount; i++) {
+        if (employees[i].employeeID == empId) {
+
+            cout << "\n========================================\n";
+            cout << "           Salary Information\n";
+            cout << "========================================\n";
+            cout << "Employee ID: " << employees[i].employeeID << "\n";
+            cout << "Name: " << employees[i].name << "\n";
+            //Fixed and setprecision to show 2 decimal places for all financial values
+            cout << "Basic Salary: " << fixed << setprecision(2) << employees[i].basicSalary << "\n";
+            cout << "Bonus: " << fixed << setprecision(2) << employees[i].bonus << "\n";
+            cout << "Overtime: " << fixed << setprecision(2) << employees[i].overtime << "\n";
+            cout << "Tax: " << fixed << setprecision(2) << employees[i].tax << "\n";
+            cout << "Net Salary: " << fixed << setprecision(2) << employees[i].netSalary << "\n";
+            cout << "========================================\n";
+            break;
+        }
+	}
+
 } // mostafa elhadidy
 
 void viewAttendance() {
@@ -508,6 +517,7 @@ void viewAttendance() {
 
     if (!found) {
         cout << "No attendance records found for this employee\n";
+        cout << "========================================\n";
     }
 }// mostafa elhadidy
 
@@ -572,7 +582,8 @@ void addEmployee() {
     employees[employeeCount] = e;
     employeeCount++;
 
-    cout << "Employee added successfully!\n";
+    cout << "\nEmployee added successfully!\n";
+    cout << "========================================\n";
     saveEmployees();
 }// mostafa2
 
@@ -671,7 +682,7 @@ void calculateSalary(long long empId)
 	//Calculating net salary according to the formula: (Basic Salary + Bonus) - Tax
     employees[index].netSalary = (employees[index].basicSalary + employees[index].bonus) - employees[index].tax;
 
-    cout << "Salary calculated successfully for Employee ID " << empId << ".\n";
+    cout << "\nSalary calculated successfully for Employee ID " << empId << ".\n";
     cout << "========================================\n";
 }
 // eyad 
@@ -1057,7 +1068,7 @@ void viewAllEmployeesData() {
 
         //View data
         viewPersonalInfo();
-        viewSalary();
+        viewSalary(employees[currentEmployeeIndex].employeeID);
         viewAttendance();
     }
 
