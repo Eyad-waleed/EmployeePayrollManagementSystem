@@ -611,29 +611,29 @@ void updateEmployee(long long empId)
     getline(cin, employees[index].password);
 
     cout << "Current Phone: 0" << employees[index].phone << endl;
-    cout << "Enter new Phone: ";
+    cout << "Enter New Phone: ";
 	employees[index].phone = getValidId();
 
     cout << "Current Role: " << employees[index].role << endl;
-	cout << "Enter new Role: ";
+	cout << "Enter New Role: ";
     getline(cin, employees[index].role);
 
     cout << "Current Age: " << employees[index].age << endl;
-	cout << "Enter new Age: ";
+	cout << "Enter New Age: ";
     employees[index].age = getValidInt();
 
 
     cout << "Current overtime: " << employees[index].overtime << endl;
-    cout << "Enter new overtime: ";
+    cout << "Enter New overtime: ";
 	employees[index].overtime = getValidInt();
 
 
     cout << "Current Total Hours Worked: " << employees[index].TotalHoursWorked << endl;
-    cout << "Enter new Total Hours Worked: ";
+    cout << "Enter New Total Hours Worked: ";
     employees[index].TotalHoursWorked = getValidInt();
 
     cout << "Current Work Hours Per Month: " << employees[index].WorkHoursPerMonth << endl;
-    cout << "Enter new Work Hours Per Month: ";
+    cout << "Enter New Work Hours Per Month: ";
     employees[index].WorkHoursPerMonth = getValidInt();
 
     cout << "\nEmployee updated successfully!\n";
