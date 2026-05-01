@@ -1009,7 +1009,7 @@ int getValidInt() {
         cin >> value;
 
         //Check if the input was successful (!cin.fail()) AND meets your criteria (> 0)
-        if (!cin.fail() && value > 0) {
+        if (!cin.fail() && value >= 0) {
 
             //Clear the rest of the input buffer to prevent leftover characters from interfering with future inputs
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -1030,11 +1030,10 @@ int getValidInt() {
 //Same logic as getValidInt but for long long type to handle larger numbers like IDs and phone numbers
 long long  getValidId() {
     long long id;
-
     while (true) {
         cin >> id;
 
-        if (!cin.fail()) {
+        if (!cin.fail() && id >= 0) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return id;
         }
