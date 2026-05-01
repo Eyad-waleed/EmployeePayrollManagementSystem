@@ -599,7 +599,7 @@ void updateEmployee(long long empId)
     cout << "Enter New Password: " << endl;
     getline(cin, employees[index].password);
 
-    cout << "Current Phone: " << employees[index].phone << endl;
+    cout << "Current Phone: 0" << employees[index].phone << endl;
     cout << "Enter new Phone: ";
 	employees[index].phone = getValidId();
 
