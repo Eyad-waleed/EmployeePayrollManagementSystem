@@ -171,12 +171,12 @@ void handleAdmin() {
                 cout << "\n========================================\n";
                 cout << "           Calculate Salary            \n";
                 cout << "========================================\n";
-				cout << "Note: Salary will be calculated based on the current attendance and hours data for the employee.\n";
-				cout << "Formula is (Basic Salary + Bonus) - Tax\n";
+                cout << "Note: Salary will be calculated based on the current attendance and hours data for the employee.\n";
+                cout << "Formula is (Basic Salary + Bonus) - Tax\n";
                 cout << "Enter Employee ID to calculate salary: ";
                 empId = getValidId();
                 calculateSalary(empId);
-				viewSalary(empId);
+                viewSalary(empId);
                 break;
             }
             case 6:
@@ -486,12 +486,12 @@ void viewSalary(long long empId) {
             cout << "Basic Salary: " << fixed << setprecision(2) << employees[i].basicSalary << "\n";
             cout << "Bonus: " << fixed << setprecision(2) << employees[i].bonus << "\n";
             cout << "Overtime: " << fixed << setprecision(2) << employees[i].overtime << "\n";
-            cout << "Tax: " << fixed << setprecision(2) << employees[i].tax << "\n";
+            cout << "Tax 14% of Basic Salary : " << fixed << setprecision(2) << employees[i].tax << "\n";
             cout << "Net Salary: " << fixed << setprecision(2) << employees[i].netSalary << "\n";
             cout << "========================================\n";
             break;
         }
-	}
+    }
 
 } // mostafa elhadidy
 
@@ -568,7 +568,7 @@ void addEmployee() {
     getline(cin, e.name);
 
     cout << "Phone: ";
-	e.phone = getValidId();
+    e.phone = getValidId();
 
     cout << "Role: ";
     getline(cin, e.role);
@@ -598,7 +598,7 @@ void updateEmployee(long long empId)
         }
     }
 
-	//Warning because there's no input validation for index but we don't need it because we already validate the ID in the calling function (addEmployee)
+    //Warning because there's no input validation for index but we don't need it because we already validate the ID in the calling function (addEmployee)
     cout << "Current Name: " << employees[index].name << endl;
     cout << "Enter New Name: ";
     getline(cin >> ws, employees[index].name);
@@ -612,20 +612,20 @@ void updateEmployee(long long empId)
 
     cout << "Current Phone: 0" << employees[index].phone << endl;
     cout << "Enter New Phone: ";
-	employees[index].phone = getValidId();
+    employees[index].phone = getValidId();
 
     cout << "Current Role: " << employees[index].role << endl;
-	cout << "Enter New Role: ";
+    cout << "Enter New Role: ";
     getline(cin, employees[index].role);
 
     cout << "Current Age: " << employees[index].age << endl;
-	cout << "Enter New Age: ";
+    cout << "Enter New Age: ";
     employees[index].age = getValidInt();
 
 
     cout << "Current overtime: " << employees[index].overtime << endl;
     cout << "Enter New overtime: ";
-	employees[index].overtime = getValidInt();
+    employees[index].overtime = getValidInt();
 
 
     cout << "Current Total Hours Worked: " << employees[index].TotalHoursWorked << endl;
@@ -659,7 +659,7 @@ void calculateSalary(long long empId)
         return;
     }
 
-	//Validation if 0 or negative to prevent division by zero and incorrect calculations
+    //Validation if 0 or negative to prevent division by zero and incorrect calculations
     if (employees[index].WorkHoursPerMonth <= 0) {
         cout << "Error: Work Hours Per Month must be greater than 0 to calculate salary.\n";
         return;
@@ -673,13 +673,13 @@ void calculateSalary(long long empId)
         employees[index].overtime = 0;
     }
 
-	//Calculating bonus based on overtime
+    //Calculating bonus based on overtime
     employees[index].bonus = (employees[index].basicSalary / employees[index].WorkHoursPerMonth) * employees[index].overtime;
 
     //Calculating tax
     employees[index].tax = (employees[index].basicSalary * TaxRate);
 
-	//Calculating net salary according to the formula: (Basic Salary + Bonus) - Tax
+    //Calculating net salary according to the formula: (Basic Salary + Bonus) - Tax
     employees[index].netSalary = (employees[index].basicSalary + employees[index].bonus) - employees[index].tax;
 
     cout << "\nSalary calculated successfully for Employee ID " << empId << ".\n";
@@ -718,17 +718,17 @@ void recordAttendance() {
     }
 
     //Validation on month
-        while (true) {
-            cout << "Enter Month (1-12): ";
-            month = getValidInt();
+    while (true) {
+        cout << "Enter Month (1-12): ";
+        month = getValidInt();
 
-            if (month >= 1 && month <= 12) {
-                break;
-            }
-            else {
-                cout << "Error: Month must be between 1 and 12. Try again: ";
-            }
+        if (month >= 1 && month <= 12) {
+            break;
         }
+        else {
+            cout << "Error: Month must be between 1 and 12. Try again: ";
+        }
+    }
 
     //Check for an existing record
     int recordIndex = -1;
@@ -758,7 +758,7 @@ void recordAttendance() {
     }
 
     else {
-		//Creating a new record if it doesn't exist
+        //Creating a new record if it doesn't exist
         if (attendanceCount >= MAX_ATTENDANCE) {
             cout << "Error: Attendance records are full.\n";
             cout << "========================================\n";
@@ -767,11 +767,11 @@ void recordAttendance() {
 
         cout << "\nNo existing record found for this ID. Creating a new one.\n";
 
-		//Initializing the new record with ID and Month
+        //Initializing the new record with ID and Month
         attendanceRecords[attendanceCount].employeeID = id;
         attendanceRecords[attendanceCount].month = month;
 
-		//Validation for Days Present and Absent
+        //Validation for Days Present and Absent
         while (true) {
             cout << "Enter Days Present: ";
             while (true) {
@@ -799,7 +799,7 @@ void recordAttendance() {
             }
             else {
                 break;
-			}
+            }
         }
 
         attendanceCount++;
@@ -853,7 +853,7 @@ void updateAttendance(long long empId) {
                 }
                 else {
                     break;
-				}
+                }
             }
 
 
