@@ -172,7 +172,7 @@ void handleAdmin() {
                 cout << "           Calculate Salary            \n";
                 cout << "========================================\n";
                 cout << "Note: Salary will be calculated based on the current attendance and hours data for the employee.\n";
-                cout << "Formula is (Basic Salary + Bonus) - Tax\n";
+                cout << "Formula is Net Salary = (Basic Salary + Bonus) - Tax\n";
                 cout << "Enter Employee ID to calculate salary: ";
                 empId = getValidId();
                 calculateSalary(empId);
@@ -285,9 +285,9 @@ bool employeeLogin()
     string Username;
     string Password;
 
-    cout << "Enter your username: ";
+    cout << "Enter Username: ";
     getline(cin >> ws, Username);
-    cout << "Enter your password: ";
+    cout << "Enter Password: ";
     getline(cin, Password);
 
     for (int i = 0; i < employeeCount; i++)
@@ -480,8 +480,8 @@ void viewSalary(long long empId) {
             cout << "\n========================================\n";
             cout << "           Salary Information\n";
             cout << "========================================\n";
-            cout << "Employee ID: " << employees[i].employeeID << "\n";
             cout << "Name: " << employees[i].name << "\n";
+            cout << "ID: " << employees[i].employeeID << "\n";
             //Fixed and setprecision to show 2 decimal places for all financial values
             cout << "Basic Salary: " << fixed << setprecision(2) << employees[i].basicSalary << "\n";
             cout << "Overtime Hours: " << fixed << setprecision(2) << employees[i].overtime << "\n";
@@ -499,8 +499,6 @@ void viewAttendance() {
     cout << "\n========================================\n";
     cout << "           Attendance Records\n";
     cout << "========================================\n";
-
-    cout << "\n========================================\n";
     cout << "Employee ID: " << employees[currentEmployeeIndex].employeeID << "\n";
     cout << "Name: " << employees[currentEmployeeIndex].name << "\n\n";
 
@@ -558,14 +556,14 @@ void addEmployee() {
     }
 
     //Taking details from user
+    cout << "Name: ";
+    getline(cin, e.name);
+    
     cout << "Username: ";
     getline(cin >> ws, e.username);
 
     cout << "Password: ";
     getline(cin, e.password);
-
-    cout << "Name: ";
-    getline(cin, e.name);
 
     cout << "Phone: ";
     e.phone = getValidId();
@@ -575,6 +573,9 @@ void addEmployee() {
 
     cout << "Age: ";
     e.age = getValidInt();
+
+    cout << "Work Hours Per Month: ";
+    e.WorkHoursPerMonth = getValidInt();
 
     cout << "Salary: ";
     e.basicSalary = getValidInt();
@@ -603,11 +604,12 @@ void updateEmployee(long long empId)
     cout << "Enter New Name: ";
     getline(cin >> ws, employees[index].name);
 
-    cout << "Current Salary: " << employees[index].basicSalary << endl;
-    cout << "Enter New Salary: ";
-    employees[index].basicSalary = getValidInt();
+    cout << "Current Username: " << employees[index].username << endl;
+    cout << "Enter New Username: ";
+    getline(cin >> ws, employees[index].username);
 
-    cout << "Enter New Password: " << endl;
+
+    cout << "Enter New Password: ";
     getline(cin, employees[index].password);
 
     cout << "Current Phone: 0" << employees[index].phone << endl;
@@ -621,6 +623,10 @@ void updateEmployee(long long empId)
     cout << "Current Age: " << employees[index].age << endl;
     cout << "Enter New Age: ";
     employees[index].age = getValidInt();
+
+    cout << "Current Salary: " << employees[index].basicSalary << endl;
+    cout << "Enter New Salary: ";
+    employees[index].basicSalary = getValidInt();
 
 
     cout << "Current overtime: " << employees[index].overtime << endl;
