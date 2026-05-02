@@ -142,7 +142,6 @@ void handleAdmin() {
             cout << "           Login Successful\n";
             cout << "           Welcome, " << admins[currentAdminIndex].name << "!\n";
             cout << "========================================\n";
-            break;
             int choice_admin;
             long long  empId;
             while (true) {
