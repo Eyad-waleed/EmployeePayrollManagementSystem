@@ -136,65 +136,67 @@ void showMainMenu() {
 
 
 void handleAdmin() {
-    if (adminLogin()) {
-        cout << "\n========================================\n";
-        cout << "           Login Successful\n";
-        cout << "           Welcome, " << admins[currentAdminIndex].name << "!\n";
-        cout << "========================================\n";
-        int choice_admin;
-        long long  empId;
-        while (true) {
-            cout << "\n===== Admin Menu =====\n";
-            cout << "1. Add/Update Employee\n";
-            cout << "2. Delete Employee\n";
-            cout << "3. Record/Update Attendance\n";
-            cout << "4. Delete Attendance\n";
-            cout << "5. Calculate Salary\n";
-            cout << "6. View All Employees Data\n";
-            cout << "7. Logout\n";
-            cout << "Choose: ";
-            choice_admin = getValidInt();
-            switch (choice_admin) {
-            case 1:
-                addEmployee();
-                break;
-            case 2:
-                deleteEmployee();
-                break;
-            case 3:
-                recordAttendance();
-                break;
-            case 4:
-                deleteAttendance();
-                break;
-            case 5: {
-                cout << "\n========================================\n";
-                cout << "           Calculate Salary            \n";
-                cout << "========================================\n";
-                cout << "Note: Salary will be calculated based on the current attendance and hours data for the employee.\n";
-                cout << "Formula is Net Salary = (Basic Salary + Bonus) - Tax\n";
-                cout << "Enter Employee ID to calculate salary: ";
-                empId = getValidId();
-                calculateSalary(empId);
-                viewSalary(empId);
-                break;
-            }
-            case 6:
-                viewAllEmployeesData();
-                break;
-            case 7:
-                cout << "Logging out...\n";
-                return;
-            default:
-                cout << "Invalid choice!\n";
+    while(true) {
+        if (adminLogin()) {
+            cout << "\n========================================\n";
+            cout << "           Login Successful\n";
+            cout << "           Welcome, " << admins[currentAdminIndex].name << "!\n";
+            cout << "========================================\n";
+            break;
+            int choice_admin;
+            long long  empId;
+            while (true) {
+                cout << "\n===== Admin Menu =====\n";
+                cout << "1. Add/Update Employee\n";
+                cout << "2. Delete Employee\n";
+                cout << "3. Record/Update Attendance\n";
+                cout << "4. Delete Attendance\n";
+                cout << "5. Calculate Salary\n";
+                cout << "6. View All Employees Data\n";
+                cout << "7. Logout\n";
+                cout << "Choose: ";
+                choice_admin = getValidInt();
+                switch (choice_admin) {
+                case 1:
+                    addEmployee();
+                    break;
+                case 2:
+                    deleteEmployee();
+                    break;
+                case 3:
+                    recordAttendance();
+                    break;
+                case 4:
+                    deleteAttendance();
+                    break;
+                case 5: {
+                    cout << "\n========================================\n";
+                    cout << "           Calculate Salary            \n";
+                    cout << "========================================\n";
+                    cout << "Note: Salary will be calculated based on the current attendance and hours data for the employee.\n";
+                    cout << "Formula is Net Salary = (Basic Salary + Bonus) - Tax\n";
+                    cout << "Enter Employee ID to calculate salary: ";
+                    empId = getValidId();
+                    calculateSalary(empId);
+                    viewSalary(empId);
+                    break;
+                }
+                case 6:
+                    viewAllEmployeesData();
+                    break;
+                case 7:
+                    cout << "Logging out...\n";
+                    return;
+                default:
+                    cout << "Invalid choice!\n";
+                }
             }
         }
-
-
+        else {
+            cout << "\nError: Invalid username or password please try again\n";
+        }
     }
-    else {
-        cout << "\nError: Invalid username or password\n";
-    }
+
 }
 
 
