@@ -1061,14 +1061,11 @@ void viewAllEmployeesData() {
         return;
     }
 
-    //Save the original index
-    int originalIndex = currentEmployeeIndex;
-
     //Loop through all employees
     for (int i = 0; i < employeeCount; i++) {
         cout << "\n\n>>>>>>>>>> EMPLOYEE #" << (i + 1) << " <<<<<<<<<<";
 
-        // Temporarily trick the program into thinking 'i' is the logged-in employee
+        //Temporarily trick the program into thinking 'i' is the logged-in employee
         currentEmployeeIndex = i;
 
         //View data
@@ -1078,6 +1075,6 @@ void viewAllEmployeesData() {
     }
 
     //Restore original index
-    currentEmployeeIndex = originalIndex;
+    currentEmployeeIndex = -1;
 
 }//mahmoud 
