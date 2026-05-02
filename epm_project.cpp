@@ -1070,7 +1070,7 @@ void viewAllEmployeesData() {
 
         //View data
         viewPersonalInfo();
-        viewSalary(employees[currentEmployeeIndex].employeeID);
+        viewSalary(i);
         viewAttendance();
     }
 
