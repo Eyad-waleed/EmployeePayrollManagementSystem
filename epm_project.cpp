@@ -1063,7 +1063,7 @@ void viewAllEmployeesData() {
 
     //Loop through all employees
     for (int i = 0; i < employeeCount; i++) {
-        cout << "\n\n>>>>>>>>>> EMPLOYEE #" << (i + 1) << " <<<<<<<<<<";
+        cout << "\n\n>>>>>>>>>>>>> EMPLOYEE #" << (i + 1) << " <<<<<<<<<<<<<";
 
         //Temporarily trick the program into thinking 'i' is the logged-in employee
         currentEmployeeIndex = i;
